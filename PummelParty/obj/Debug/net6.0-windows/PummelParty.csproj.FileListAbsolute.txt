@@ -1,0 +1,17 @@
+C:\Users\Asus\source\repos\PummelParty\PummelParty\bin\Debug\net6.0-windows\PummelParty.exe
+C:\Users\Asus\source\repos\PummelParty\PummelParty\bin\Debug\net6.0-windows\PummelParty.deps.json
+C:\Users\Asus\source\repos\PummelParty\PummelParty\bin\Debug\net6.0-windows\PummelParty.runtimeconfig.json
+C:\Users\Asus\source\repos\PummelParty\PummelParty\bin\Debug\net6.0-windows\PummelParty.dll
+C:\Users\Asus\source\repos\PummelParty\PummelParty\bin\Debug\net6.0-windows\PummelParty.pdb
+C:\Users\Asus\source\repos\PummelParty\PummelParty\obj\Debug\net6.0-windows\PummelParty.csproj.AssemblyReference.cache
+C:\Users\Asus\source\repos\PummelParty\PummelParty\obj\Debug\net6.0-windows\PummelParty.Form1.resources
+C:\Users\Asus\source\repos\PummelParty\PummelParty\obj\Debug\net6.0-windows\PummelParty.csproj.GenerateResource.cache
+C:\Users\Asus\source\repos\PummelParty\PummelParty\obj\Debug\net6.0-windows\PummelParty.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Asus\source\repos\PummelParty\PummelParty\obj\Debug\net6.0-windows\PummelParty.AssemblyInfoInputs.cache
+C:\Users\Asus\source\repos\PummelParty\PummelParty\obj\Debug\net6.0-windows\PummelParty.AssemblyInfo.cs
+C:\Users\Asus\source\repos\PummelParty\PummelParty\obj\Debug\net6.0-windows\PummelParty.csproj.CoreCompileInputs.cache
+C:\Users\Asus\source\repos\PummelParty\PummelParty\obj\Debug\net6.0-windows\PummelParty.dll
+C:\Users\Asus\source\repos\PummelParty\PummelParty\obj\Debug\net6.0-windows\refint\PummelParty.dll
+C:\Users\Asus\source\repos\PummelParty\PummelParty\obj\Debug\net6.0-windows\PummelParty.pdb
+C:\Users\Asus\source\repos\PummelParty\PummelParty\obj\Debug\net6.0-windows\PummelParty.genruntimeconfig.cache
+C:\Users\Asus\source\repos\PummelParty\PummelParty\obj\Debug\net6.0-windows\ref\PummelParty.dll
