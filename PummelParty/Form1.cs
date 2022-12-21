@@ -6,7 +6,11 @@ namespace PummelParty
     public partial class Form1 : Form
     {
         Player player1;
-        int position = 0;
+        //Player player2;
+        //Player player3;
+
+        Player[] players = new Player[3];
+        int[] positions = new int[3] {0, 0, 0};
         public Form1()
         {
             InitializeComponent();
@@ -34,30 +38,38 @@ namespace PummelParty
             this.BackgroundImage = Image.FromFile(Path.Join(Directory.GetCurrentDirectory(), @"\images\background.jpg"));
 
             //появление игроков на старте
-            player1 = new Player(new Point(coordinatesX[0], coordinatesY[0]));
-            Controls.Add(player1.Draw());
+            for(int i = 0; i < players.Length; i++)
+            {
+                players[i] = new Player($"Player {i+1}", new Point(coordinatesX[0], coordinatesY[0]));
+                Controls.Add(players[i].Draw());
+            }
         }
 
         private void rollButon_Click(object sender, EventArgs e)
         {
             labelCountSteps.Visible = true;
-            Random random = new Random();
-            var steps = random.Next(1, 13);
-            position += steps;
-            if (position > 101)
+            
+            for (int i = 0; i < players.Length; i++)
             {
-                position = 101;
-                player1.Body.Location = new Point(coordinatesX[position], coordinatesY[position]);
-                youWon();
+                Random random = new Random();
+                var steps = random.Next(1, 13);
+                players[i].Move(positions[i], steps);
+                if (players[i].IsWinner)
+                {
+                    positions[i] = 102;
+                    Controls.Add(players[i].Draw());
+                    youWon(players[i].Name);
+                }
+                positions[i] += steps;
+                Controls.Add(players[i].Draw());
+                labelCountSteps.Text = $"{steps} {positions[i]}";
             }
-            player1.Body.Location = new Point(coordinatesX[position], coordinatesY[position]);
-            labelCountSteps.Text = $"{steps} {position}";
         }
 
-        private void youWon()
+        private void youWon(string name)
         {
             labelWin.Visible = true;
-            labelWin.Text = "You won!!!";
+            labelWin.Text = $"{name} won!!!";
             labelCountSteps.Visible = false;
             rollButon.Visible = false;
         }
