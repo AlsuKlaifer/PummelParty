@@ -1,16 +1,26 @@
 using Microsoft.VisualBasic.ApplicationServices;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
+using System.Net.Sockets;
+using System.Text;
+using System.Timers;
+using Server;
 
+//Первый игрок
 namespace PummelParty
 {
     public partial class Form1 : Form
     {
+        Server_Class sc = new Server_Class();
         Player player1;
-        //Player player2;
+        Player player2;
         //Player player3;
+        int position = 0;
+        bool a = false;
 
-        Player[] players = new Player[3];
-        int[] positions = new int[3] {0, 0, 0};
+        Socket tcpClient = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        System.Timers.Timer timer = new System.Timers.Timer(100);
+        //Player[] players = new Player[3];
+        //int[] positions = new int[3] {0, 0, 0};
         public Form1()
         {
             InitializeComponent();
@@ -27,7 +37,7 @@ namespace PummelParty
         public int[] coordinatesX = coordinatesXInit();
         public int[] coordinatesY = coordinatesYInit();
 
-        private void buttonStart_Click(object sender, EventArgs e)
+        private async void buttonStart_Click(object sender, EventArgs e)
         {
             buttonStart.Visible = false;
             buttonStart.Enabled = false;
@@ -37,41 +47,88 @@ namespace PummelParty
             //установка фона
             this.BackgroundImage = Image.FromFile(Path.Join(Directory.GetCurrentDirectory(), @"\images\background.jpg"));
 
+            await tcpClient.ConnectAsync("127.0.0.1", 80);
+
             //появление игроков на старте
-            for(int i = 0; i < players.Length; i++)
-            {
-                players[i] = new Player($"Player {i+1}", new Point(coordinatesX[0], coordinatesY[0]));
-                Controls.Add(players[i].Draw());
-            }
+
+            player1 = new Player($"Player", new Point(coordinatesX[0], coordinatesY[0]));
+            player2 = new Player($"Player", new Point(coordinatesX[0], coordinatesY[0]));
+                Controls.Add(player1.Draw());
+                Controls.Add(player2.Draw());
         }
 
         private void rollButon_Click(object sender, EventArgs e)
         {
             labelCountSteps.Visible = true;
-            
-            for (int i = 0; i < players.Length; i++)
+            rollButon.Enabled = false;
+
+            Random random = new Random();
+            var steps = random.Next(1, 13);
+            player1.Move(position, steps);
+            if (player1.IsWinner)
             {
-                Random random = new Random();
-                var steps = random.Next(1, 13);
-                players[i].Move(positions[i], steps);
-                if (players[i].IsWinner)
-                {
-                    positions[i] = 102;
-                    Controls.Add(players[i].Draw());
-                    youWon(players[i].Name);
-                }
-                positions[i] += steps;
-                Controls.Add(players[i].Draw());
-                labelCountSteps.Text = $"{steps} {positions[i]}";
+                position = 102;
+                Controls.Add(player1.Draw());
+                youWon(player1.Name);
             }
+            position += steps;
+            Controls.Add(player1.Draw());
+            labelCountSteps.Text = $"{steps} {position}";
+
+            string str = $"{player1.Body.Location.X} {player1.Body.Location.Y} \n";
+            byte[] buffer = Encoding.UTF8.GetBytes(str);
+            tcpClient.Send(buffer);
+            if(!a) { Receive(); }            
+        }
+
+        private void Receive()
+        {            
+            var response = new List<byte>();
+            byte[] bytesRead = new byte[1];
+            while (true)
+            {
+                var count = tcpClient.Receive(bytesRead);
+                // смотрим, если считанный байт представляет конечный символ, выходим
+                if (count == 0 || bytesRead[0] == '\n') break;
+                // иначе добавляем в буфер
+                response.Add(bytesRead[0]);
+            }
+            string turn = Encoding.UTF8.GetString(response.ToArray());
+            if (turn.Split(' ')[0] == "0")
+            {
+                    rollButon.Enabled = true;
+            }
+            else { rollButon.Enabled = false; }
+
+            if(turn.Split(' ')[1] == "WIN")
+            {
+                Lose();
+            }
+            else
+            {
+                player2.Body.Location = new Point(Convert.ToInt32(turn.Split(' ')[1]),
+                                              Convert.ToInt32(turn.Split(' ')[2]));
+            }
+            
+            
+        }
+
+        public void Lose()
+        {
+            labelWin.Visible = true;
+            labelWin.Text = $"you are looser!!!";
+            labelCountSteps.Visible = false;
+            rollButon.Visible = false;
         }
 
         private void youWon(string name)
         {
+            a = true;
             labelWin.Visible = true;
             labelWin.Text = $"{name} won!!!";
             labelCountSteps.Visible = false;
             rollButon.Visible = false;
+            tcpClient.Send(Encoding.UTF8.GetBytes("WIN"));
         }
 
         //метод для нахождения координат
