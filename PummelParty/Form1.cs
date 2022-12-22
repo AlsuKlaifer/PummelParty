@@ -13,14 +13,13 @@ namespace PummelParty
         Server_Class sc = new Server_Class();
         Player player1;
         Player player2;
-        //Player player3;
+
         int position = 0;
         bool a = false;
 
         Socket tcpClient = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         System.Timers.Timer timer = new System.Timers.Timer(100);
-        //Player[] players = new Player[3];
-        //int[] positions = new int[3] {0, 0, 0};
+
         public Form1()
         {
             InitializeComponent();
@@ -32,6 +31,7 @@ namespace PummelParty
             rollButon.Visible = false;
             labelWin.Visible = false;
             labelCountSteps.Visible = false;
+            dicePictureBox.Visible = false;
         }
 
         public int[] coordinatesX = coordinatesXInit();
@@ -41,37 +41,44 @@ namespace PummelParty
         {
             buttonStart.Visible = false;
             buttonStart.Enabled = false;
+            dicePictureBox.Visible = false;
 
             rollButon.Visible = true;
             rollButon.Enabled = true;
             //установка фона
             this.BackgroundImage = Image.FromFile(Path.Join(Directory.GetCurrentDirectory(), @"\images\background.jpg"));
-
+            this.BackgroundImageLayout = ImageLayout.None;
             await tcpClient.ConnectAsync("127.0.0.1", 80);
 
             //появление игроков на старте
-
-            player1 = new Player($"Player", new Point(coordinatesX[0], coordinatesY[0]));
+            Random random = new Random();
+            int positionSdvig = random.Next(10, 20);
+            player1 = new Player($"Player", new Point(coordinatesX[0] - positionSdvig, coordinatesY[0] - positionSdvig));
             player2 = new Player($"Player", new Point(coordinatesX[0], coordinatesY[0]));
-                Controls.Add(player1.Draw());
-                Controls.Add(player2.Draw());
+            Controls.Add(player1.Draw());
+            Controls.Add(player2.Draw());
+            //Receive();
         }
 
         private void rollButon_Click(object sender, EventArgs e)
         {
             labelCountSteps.Visible = true;
             rollButon.Enabled = false;
-
             Random random = new Random();
-            var steps = random.Next(1, 13);
-            player1.Move(position, steps);
+            var steps = random.Next(2, 13);
+
+            dicePictureBox.Visible = true;
+            dicePictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            string picture = $"\\images\\steps{steps}.png";
+            dicePictureBox.Image = Image.FromFile(Path.Join(Directory.GetCurrentDirectory(), @picture));
+
+            position = player1.Move(position, steps);
             if (player1.IsWinner)
             {
                 position = 102;
                 Controls.Add(player1.Draw());
-                youWon(player1.Name);
+                youWon();
             }
-            position += steps;
             Controls.Add(player1.Draw());
             labelCountSteps.Text = $"{steps} {position}";
 
@@ -109,25 +116,24 @@ namespace PummelParty
                 player2.Body.Location = new Point(Convert.ToInt32(turn.Split(' ')[1]),
                                               Convert.ToInt32(turn.Split(' ')[2]));
             }
-            
-            
         }
 
         public void Lose()
         {
             labelWin.Visible = true;
-            labelWin.Text = $"you are looser!!!";
+            labelWin.Text = $"You are looser!!!";
             labelCountSteps.Visible = false;
             rollButon.Visible = false;
         }
 
-        private void youWon(string name)
+        private void youWon()
         {
             a = true;
             labelWin.Visible = true;
-            labelWin.Text = $"{name} won!!!";
+            labelWin.Text = $"You are winner!!!";
             labelCountSteps.Visible = false;
             rollButon.Visible = false;
+            dicePictureBox.Visible = false;
             tcpClient.Send(Encoding.UTF8.GetBytes("WIN"));
         }
 

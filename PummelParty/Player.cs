@@ -10,8 +10,8 @@ namespace PummelParty
     internal class Player
     {
         public string Name { get; set; }
-        public int Width { get; set; } = 30;
-        public int Height { get; set; } = 30;
+        public int Width { get; set; } = 40;
+        public int Height { get; set; } = 40;
         public Point StartLocation { get; set; }
         public PictureBox Body { get; private set; } = new PictureBox();
         public bool IsWinner { get; set; } = false;
@@ -31,7 +31,7 @@ namespace PummelParty
 
             //круглые аватарки
             System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
-            path.AddEllipse(0, 0, 30, 30);
+            path.AddEllipse(0, 0, Width, Height);
             Region rgn = new Region(path);
             Body.Region = rgn;
             Body.BackColor = SystemColors.ActiveCaption;
@@ -50,19 +50,95 @@ namespace PummelParty
 
         public int[] coordinatesX = coordinatesXInit();
         public int[] coordinatesY = coordinatesYInit();
-        
-        public void Move(int position, int steps)
+
+        public int Move(int position, int steps)
         {
             Random random = new Random();
             int positionSdvig = random.Next(5, 20);
             position += steps;
+
             if (position > 101)
             {
                 position = 101;
                 Body.Location = new Point(coordinatesX[position] - positionSdvig, coordinatesY[position] - positionSdvig);
                 IsWinner = true;
             }
-            Body.Location = new Point(coordinatesX[position] - positionSdvig, coordinatesY[position] - positionSdvig);
+            else
+            {
+                Body.Location = new Point(coordinatesX[position] - positionSdvig, coordinatesY[position] - positionSdvig);
+
+                position = CheckPosition(position, steps);
+
+                Body.Location = new Point(coordinatesX[position] - positionSdvig, coordinatesY[position] - positionSdvig);
+            }
+            return position;
+        }
+
+        public int CheckPosition(int position, int steps)
+        {
+            //super positions
+            switch (position)
+            {
+                //blue
+                case 6:
+                    position = 10;
+                    Thread.Sleep(2000);
+                    break;
+                case 19:
+                    position = 42;
+                    Thread.Sleep(2000);
+                    break;
+                case 34:
+                    position = 39;
+                    Thread.Sleep(2000);
+                    break;
+                case 48:
+                    position = 54;
+                    Thread.Sleep(2000);
+                    break;
+                case 62:
+                    position = 68;
+                    Thread.Sleep(2000);
+                    break;
+                case 74:
+                    position = 79;
+                    Thread.Sleep(2000);
+                    break;
+                case 91:
+                    position = 94;
+                    Thread.Sleep(2000);
+                    break;
+                //red
+                case 46:
+                    position = 13;
+                    Thread.Sleep(2000);
+                    break;
+                case 30:
+                    position = 23;
+                    Thread.Sleep(2000);
+                    break;
+                case 58:
+                    position = 55;
+                    Thread.Sleep(2000);
+                    break;
+                case 72:
+                    position = 53;
+                    Thread.Sleep(2000);
+                    break;
+                case 88:
+                    position = 83;
+                    Thread.Sleep(2000);
+                    break;
+            }
+
+            //green
+            if (position == 9 || position == 21 || position == 41 || position == 65 || position == 81)
+            {
+                Thread.Sleep(2000);
+                position += steps;
+            }
+
+            return position;
         }
 
         static private int[] coordinatesXInit()
