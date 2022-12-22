@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.buttonStart = new System.Windows.Forms.Button();
+            this.rollButon = new System.Windows.Forms.Button();
+            this.labelWin = new System.Windows.Forms.Label();
+            this.labelCountSteps = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonStart
@@ -41,28 +44,76 @@
             this.buttonStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStart.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonStart.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonStart.Location = new System.Drawing.Point(336, 194);
+            this.buttonStart.Location = new System.Drawing.Point(550, 350);
+            this.buttonStart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonStart.Name = "buttonStart";
-            this.buttonStart.Size = new System.Drawing.Size(120, 40);
+            this.buttonStart.Size = new System.Drawing.Size(105, 30);
             this.buttonStart.TabIndex = 0;
             this.buttonStart.Text = "Start";
             this.buttonStart.UseVisualStyleBackColor = false;
             this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
             // 
+            // rollButon
+            // 
+            this.rollButon.BackColor = System.Drawing.Color.BlueViolet;
+            this.rollButon.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.rollButon.FlatAppearance.BorderSize = 2;
+            this.rollButon.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Indigo;
+            this.rollButon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rollButon.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.rollButon.ForeColor = System.Drawing.SystemColors.Control;
+            this.rollButon.Location = new System.Drawing.Point(550, 495);
+            this.rollButon.Name = "rollButon";
+            this.rollButon.Size = new System.Drawing.Size(117, 49);
+            this.rollButon.TabIndex = 1;
+            this.rollButon.Text = "Roll the dice";
+            this.rollButon.UseVisualStyleBackColor = false;
+            this.rollButon.Click += new System.EventHandler(this.rollButon_Click);
+            // 
+            // labelWin
+            // 
+            this.labelWin.AutoSize = true;
+            this.labelWin.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelWin.Location = new System.Drawing.Point(517, 235);
+            this.labelWin.Name = "labelWin";
+            this.labelWin.Padding = new System.Windows.Forms.Padding(30);
+            this.labelWin.Size = new System.Drawing.Size(203, 97);
+            this.labelWin.TabIndex = 2;
+            this.labelWin.Text = "game over";
+            // 
+            // label1
+            // 
+            this.labelCountSteps.AutoSize = true;
+            this.labelCountSteps.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelCountSteps.Location = new System.Drawing.Point(565, 428);
+            this.labelCountSteps.Name = "label1";
+            this.labelCountSteps.Size = new System.Drawing.Size(90, 37);
+            this.labelCountSteps.TabIndex = 3;
+            this.labelCountSteps.Text = "label1";
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1200, 855);
+            this.Controls.Add(this.labelCountSteps);
+            this.Controls.Add(this.labelWin);
+            this.Controls.Add(this.rollButon);
             this.Controls.Add(this.buttonStart);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private Button buttonStart;
+        private Button rollButon;
+        private Label labelWin;
+        private Label labelCountSteps;
     }
 }
