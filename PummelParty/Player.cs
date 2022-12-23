@@ -15,18 +15,17 @@ namespace PummelParty
         public Point StartLocation { get; set; }
         public PictureBox Body { get; private set; } = new PictureBox();
         public bool IsWinner { get; set; } = false;
-        public Player(string name, Point startLocation)
+        private int numberOfImage { get; set; }
+        public Player(string name, Point startLocation, int numberOfImage)
         {
             Name = name;
             StartLocation = startLocation;
+            this.numberOfImage = numberOfImage;
             InitializeObject();
         }
 
         private void InitializeObject()
         {
-            Random random = new Random();
-            int numberOfImage = random.Next(1, 3);
-
             string imagePath = $"\\images\\player{numberOfImage}.png";
 
             //круглые аватарки

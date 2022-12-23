@@ -5,6 +5,7 @@ using System.Text;
 using System.Timers;
 using Server;
 using System;
+using System.Xml.Linq;
 
 //второй игрок
 namespace PummelParty
@@ -45,6 +46,9 @@ namespace PummelParty
 
             rollButon.Visible = true;
             rollButon.Enabled = false;
+
+            textBox1.Visible = false;
+            label1.Visible = false;
             //dicePictureBox.Visible = false;
 
             //установка фона
@@ -55,8 +59,11 @@ namespace PummelParty
             //появление игроков на старте
             Random random = new Random();
             int positionSdvig = random.Next(10, 20);
-            player1 = new Player($"Player", new Point(coordinatesX[0] - positionSdvig, coordinatesY[0] - positionSdvig));
-            player2 = new Player($"Player", new Point(coordinatesX[0], coordinatesY[0]));
+            string name = textBox1.Text;
+            if(name == "")
+                name = "Player 2";
+            player1 = new Player(name, new Point(coordinatesX[0] - positionSdvig, coordinatesY[0] - positionSdvig), 4);
+            player2 = new Player($"Player", new Point(coordinatesX[0], coordinatesY[0]), 1);
 
             Controls.Add(player1.Draw());
             Controls.Add(player2.Draw());

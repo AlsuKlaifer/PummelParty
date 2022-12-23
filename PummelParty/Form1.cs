@@ -45,6 +45,10 @@ namespace PummelParty
 
             rollButon.Visible = true;
             rollButon.Enabled = true;
+
+            nameTextBox.Visible = false;
+            labelName.Visible = false;
+
             //установка фона
             this.BackgroundImage = Image.FromFile(Path.Join(Directory.GetCurrentDirectory(), @"\images\background.jpg"));
             this.BackgroundImageLayout = ImageLayout.None;
@@ -53,8 +57,11 @@ namespace PummelParty
             //появление игроков на старте
             Random random = new Random();
             int positionSdvig = random.Next(10, 20);
-            player1 = new Player($"Player", new Point(coordinatesX[0] - positionSdvig, coordinatesY[0] - positionSdvig));
-            player2 = new Player($"Player", new Point(coordinatesX[0], coordinatesY[0]));
+            string name = nameTextBox.Text;
+            if(name == "")
+                name = "Player 1";
+            player1 = new Player(name, new Point(coordinatesX[0] - positionSdvig, coordinatesY[0] - positionSdvig), 1);
+            player2 = new Player("Player", new Point(coordinatesX[0], coordinatesY[0]), 4);
             Controls.Add(player1.Draw());
             Controls.Add(player2.Draw());
             //Receive();

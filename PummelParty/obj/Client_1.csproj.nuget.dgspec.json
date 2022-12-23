@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\79874\\Documents\\GitHub\\PummelParty\\PummelParty\\Client_1.csproj": {}
+    "C:\\Users\\Asus\\Documents\\GitHub\\PummelParty\\PummelParty\\Client_1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\79874\\Documents\\GitHub\\PummelParty\\PummelParty\\Client_1.csproj": {
+    "C:\\Users\\Asus\\Documents\\GitHub\\PummelParty\\PummelParty\\Client_1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\79874\\Documents\\GitHub\\PummelParty\\PummelParty\\Client_1.csproj",
+        "projectUniqueName": "C:\\Users\\Asus\\Documents\\GitHub\\PummelParty\\PummelParty\\Client_1.csproj",
         "projectName": "Client_1",
-        "projectPath": "C:\\Users\\79874\\Documents\\GitHub\\PummelParty\\PummelParty\\Client_1.csproj",
-        "packagesPath": "C:\\Users\\79874\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\79874\\Documents\\GitHub\\PummelParty\\PummelParty\\obj\\",
+        "projectPath": "C:\\Users\\Asus\\Documents\\GitHub\\PummelParty\\PummelParty\\Client_1.csproj",
+        "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Asus\\Documents\\GitHub\\PummelParty\\PummelParty\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\79874\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "C:\\Users\\79874\\Documents\\GitHub\\PummelParty\\Server\\Server.csproj": {
-                "projectPath": "C:\\Users\\79874\\Documents\\GitHub\\PummelParty\\Server\\Server.csproj"
+              "C:\\Users\\Asus\\Documents\\GitHub\\PummelParty\\Server\\Server.csproj": {
+                "projectPath": "C:\\Users\\Asus\\Documents\\GitHub\\PummelParty\\Server\\Server.csproj"
               }
             }
           }
@@ -62,21 +62,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\79874\\Documents\\GitHub\\PummelParty\\Server\\Server.csproj": {
+    "C:\\Users\\Asus\\Documents\\GitHub\\PummelParty\\Server\\Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\79874\\Documents\\GitHub\\PummelParty\\Server\\Server.csproj",
+        "projectUniqueName": "C:\\Users\\Asus\\Documents\\GitHub\\PummelParty\\Server\\Server.csproj",
         "projectName": "Server",
-        "projectPath": "C:\\Users\\79874\\Documents\\GitHub\\PummelParty\\Server\\Server.csproj",
-        "packagesPath": "C:\\Users\\79874\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\79874\\Documents\\GitHub\\PummelParty\\Server\\obj\\",
+        "projectPath": "C:\\Users\\Asus\\Documents\\GitHub\\PummelParty\\Server\\Server.csproj",
+        "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Asus\\Documents\\GitHub\\PummelParty\\Server\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\79874\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -120,7 +120,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
