@@ -12,12 +12,15 @@ namespace PummelParty
 {
     public partial class Form1 : Form
     {
-        Server_Class sc = new Server_Class();
+        Label l = new Label();
+        ListBox lb = new ListBox();
+
         Player player1;
         Player player2;
 
         int position = 0;
         bool a = false;
+        bool pause_button = false;
 
         Socket tcpClient = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         System.Timers.Timer timer = new System.Timers.Timer(100);
@@ -33,7 +36,7 @@ namespace PummelParty
             rollButon.Visible = false;
             labelWin.Visible = false;
             labelCountSteps.Visible = false;
-            dicePictureBox.Visible = false;
+            dicePictureBox.Visible = false;            
         }
 
         public int[] coordinatesX = coordinatesXInit();
@@ -47,9 +50,23 @@ namespace PummelParty
             rollButon.Visible = true;
             rollButon.Enabled = false;
 
+            Pause.Enabled = true;
+            Pause.Visible = true;
+
             textBox1.Visible = false;
             label1.Visible = false;
             //dicePictureBox.Visible = false;
+
+            lb.Visible = false;
+            lb.Location = new Point(519, 376);
+            lb.Size = new Size(200, 200);
+            Controls.Add(lb);
+
+            l.Visible = false;
+            l.Location = new Point(519, 376);
+            l.Size = new Size(200, 200);
+            Controls.Add(l);
+
 
             //установка фона
             this.BackgroundImage = Image.FromFile(Path.Join(Directory.GetCurrentDirectory(), @"\images\background.jpg"));
@@ -82,35 +99,68 @@ namespace PummelParty
             string picture = $"\\images\\steps{steps}.png";
             dicePictureBox.Image = Image.FromFile(Path.Join(Directory.GetCurrentDirectory(), @picture));
             position = player1.Move(position, steps);
-            if (player1.IsWinner)
-            {
-                position = 102;
-                Controls.Add(player1.Draw());
-                youWon();
-            }
-            Controls.Add(player1.Draw());
-            labelCountSteps.Text = $"{steps} {position}";
 
-            string str = $"{player1.Body.Location.X} {player1.Body.Location.Y} \n";
-            byte[] buffer = Encoding.UTF8.GetBytes(str);
-            tcpClient.Send(buffer);
-            if (!a)
-            { Receive(); }
+
+            if (CheckRed_Pos())
+            {
+                if (player1.IsWinner)
+                {
+                    position = 102;
+                    Controls.Add(player1.Draw());
+                    youWon();
+                }
+                Controls.Add(player1.Draw());
+                labelCountSteps.Text = $"{steps} {position}";
+
+                string message = $"{player1.Body.Location.X} {player1.Body.Location.Y} \n";
+                byte[] buffer = Encoding.UTF8.GetBytes(message);
+                tcpClient.Send(buffer);
+                if (!a) { Receive(); }
+            }
+            else
+            {
+                string message = $"M {player1.Body.Location.X} {player1.Body.Location.Y} \n";
+                tcpClient.Send(Encoding.UTF8.GetBytes(message));
+                if (!a) { Receive(); }
+            }
+
+
+        }
+
+        public int[] redX_Cord = new int[] { 79, 564, 1154, 861, 516, 84, 649, 1003 };
+        public int[] redY_Cord = new int[] { 448, 755, 519, 405, 362, 258, 57, 205 };
+
+        private bool CheckRed_Pos()
+        {
+            for (int i = 0; i < redX_Cord.Length; i++)
+            {
+                if (player1.Body.Location == new Point(redX_Cord[i], redY_Cord[i]))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         private void Receive()
         {
-            var response = new List<byte>();
-            byte[] bytesRead = new byte[1];
-            while (true)
-            {
-                var count = tcpClient.Receive(bytesRead);
-                // смотрим, если считанный байт представляет конечный символ, выходим
-                if (count == 0 || bytesRead[0] == '\n') break;
-                // иначе добавляем в буфер
-                response.Add(bytesRead[0]);
+            string turn = Read();
+
+            if (turn.Split(' ')[0] == "P1")
+            {                
+                l.Enabled = true;
+                l.Visible = true;
+                l.Text = $"Паузу поставил {turn.Split(' ')[1]}";
+                Thread.Sleep(3000);
+                tcpClient.Send(Encoding.UTF8.GetBytes($"PN2 {player1.Name} \n"));
+                rollButon.Enabled = false;
+                return;
             }
-            string turn = Encoding.UTF8.GetString(response.ToArray());
+            else
+            {
+                rollButon.Enabled = true;
+            }
+
             if (turn.Split(' ')[0] == "1")
             {
                 rollButon.Enabled = true;
@@ -193,6 +243,48 @@ namespace PummelParty
             };
 
             return array;
+        }
+
+        private void Pause_Click(object sender, EventArgs e)
+        {
+            if (!pause_button)
+            {
+                lb.Enabled = true;
+                lb.Visible = true;
+                lb.Items.Add(player1.Name);
+                rollButon.Enabled = false;
+                tcpClient.Send(Encoding.UTF8.GetBytes($"P1 {player1.Name} \n"));
+
+                string decision = Read();
+                lb.Items.Add(decision);
+                pause_button = true;
+            }
+            else
+            {
+                lb.Enabled = false;
+                lb.Visible = false;
+                rollButon.Enabled = true;
+
+                pause_button = false;
+                lb.Items.Clear();
+
+            }
+        }
+
+        private string Read()
+        {
+            string answer;
+            var response = new List<byte>();
+            byte[] bytesRead = new byte[1];
+            while (true)
+            {
+                var count = tcpClient.Receive(bytesRead);
+                // смотрим, если считанный байт представляет конечный символ, выходим
+                if (count == 0 || bytesRead[0] == '\n') break;
+                // иначе добавляем в буфер
+                response.Add(bytesRead[0]);
+            }
+            return answer = Encoding.UTF8.GetString(response.ToArray());
         }
     }
 }

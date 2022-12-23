@@ -35,6 +35,7 @@
             this.dicePictureBox = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Pause = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dicePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -119,15 +120,28 @@
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBox1.Location = new System.Drawing.Point(502, 179);
             this.textBox1.Name = "textBox1";
+            this.textBox1.PlaceholderText = "Name";
             this.textBox1.Size = new System.Drawing.Size(151, 32);
             this.textBox1.TabIndex = 6;
-            this.textBox1.PlaceholderText = "Name";
+            // 
+            // Pause
+            // 
+            this.Pause.Enabled = false;
+            this.Pause.Location = new System.Drawing.Point(739, 419);
+            this.Pause.Name = "Pause";
+            this.Pause.Size = new System.Drawing.Size(107, 48);
+            this.Pause.TabIndex = 7;
+            this.Pause.Text = "Pause";
+            this.Pause.UseVisualStyleBackColor = true;
+            this.Pause.Visible = false;
+            this.Pause.Click += new System.EventHandler(this.Pause_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1197, 860);
+            this.ClientSize = new System.Drawing.Size(836, 860);
+            this.Controls.Add(this.Pause);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dicePictureBox);
@@ -153,5 +167,6 @@
         private PictureBox dicePictureBox;
         private Label label1;
         private TextBox textBox1;
+        private Button Pause;
     }
 }

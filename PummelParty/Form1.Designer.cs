@@ -35,6 +35,7 @@
             this.dicePictureBox = new System.Windows.Forms.PictureBox();
             this.labelName = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.Pause = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dicePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -119,15 +120,28 @@
             this.nameTextBox.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.nameTextBox.Location = new System.Drawing.Point(526, 277);
             this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.PlaceholderText = "Name";
             this.nameTextBox.Size = new System.Drawing.Size(151, 32);
             this.nameTextBox.TabIndex = 6;
-            this.nameTextBox.PlaceholderText = "Name";
+            // 
+            // Pause
+            // 
+            this.Pause.Enabled = false;
+            this.Pause.Location = new System.Drawing.Point(751, 459);
+            this.Pause.Name = "Pause";
+            this.Pause.Size = new System.Drawing.Size(97, 46);
+            this.Pause.TabIndex = 7;
+            this.Pause.Text = "Pause";
+            this.Pause.UseVisualStyleBackColor = true;
+            this.Pause.Visible = false;
+            this.Pause.Click += new System.EventHandler(this.Pause_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1197, 849);
+            this.Controls.Add(this.Pause);
             this.Controls.Add(this.nameTextBox);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.dicePictureBox);
@@ -153,5 +167,6 @@
         private PictureBox dicePictureBox;
         private Label labelName;
         private TextBox nameTextBox;
+        private Button Pause;
     }
 }
