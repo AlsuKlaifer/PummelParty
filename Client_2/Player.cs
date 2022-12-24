@@ -15,7 +15,7 @@ namespace PummelParty
         public Point StartLocation { get; set; }
         public PictureBox Body { get; private set; } = new PictureBox();
         public bool IsWinner { get; set; } = false;
-        private int numberOfImage { get; set; }
+        public int numberOfImage { get; set; }
         public Player(string name, Point startLocation, int numberOfImage)
         {
             Name = name;

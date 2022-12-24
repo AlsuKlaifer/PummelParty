@@ -1,40 +1,35 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\PummelParty\\PummelParty\\Client_1.csproj": {}
+    "C:\\Users\\Asus\\Documents\\GitHub\\PummelParty\\PummelParty\\Client_1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\PummelParty\\PummelParty\\Client_1.csproj": {
+    "C:\\Users\\Asus\\Documents\\GitHub\\PummelParty\\PummelParty\\Client_1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\PummelParty\\PummelParty\\Client_1.csproj",
+        "projectUniqueName": "C:\\Users\\Asus\\Documents\\GitHub\\PummelParty\\PummelParty\\Client_1.csproj",
         "projectName": "Client_1",
-        "projectPath": "C:\\Users\\User\\Desktop\\PummelParty\\PummelParty\\Client_1.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\PummelParty\\PummelParty\\obj\\",
+        "projectPath": "C:\\Users\\Asus\\Documents\\GitHub\\PummelParty\\PummelParty\\Client_1.csproj",
+        "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Asus\\Documents\\GitHub\\PummelParty\\PummelParty\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0-windows7.0"
+          "net6.0-windows"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://dotnet.myget.org/feed/dotnet-core/package/nuget/Microsoft.NET.Sdk.IL": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "C:\\Users\\User\\Desktop\\PummelParty\\Server\\Server.csproj": {
-                "projectPath": "C:\\Users\\User\\Desktop\\PummelParty\\Server\\Server.csproj"
+              "C:\\Users\\Asus\\Documents\\GitHub\\PummelParty\\Server\\Server.csproj": {
+                "projectPath": "C:\\Users\\Asus\\Documents\\GitHub\\PummelParty\\Server\\Server.csproj"
               }
             }
           }
@@ -54,7 +49,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -66,34 +62,29 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\User\\Desktop\\PummelParty\\Server\\Server.csproj": {
+    "C:\\Users\\Asus\\Documents\\GitHub\\PummelParty\\Server\\Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\PummelParty\\Server\\Server.csproj",
+        "projectUniqueName": "C:\\Users\\Asus\\Documents\\GitHub\\PummelParty\\Server\\Server.csproj",
         "projectName": "Server",
-        "projectPath": "C:\\Users\\User\\Desktop\\PummelParty\\Server\\Server.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\PummelParty\\Server\\obj\\",
+        "projectPath": "C:\\Users\\Asus\\Documents\\GitHub\\PummelParty\\Server\\Server.csproj",
+        "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Asus\\Documents\\GitHub\\PummelParty\\Server\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0-windows7.0"
+          "net6.0-windows"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://dotnet.myget.org/feed/dotnet-core/package/nuget/Microsoft.NET.Sdk.IL": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0-windows7.0": {
@@ -116,7 +107,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -128,7 +120,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

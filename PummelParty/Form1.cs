@@ -4,6 +4,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Timers;
 using Server;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 //Первый игрок
 namespace PummelParty
@@ -34,6 +35,8 @@ namespace PummelParty
             labelWin.Visible = false;
             labelCountSteps.Visible = false;
             dicePictureBox.Visible = false;
+            pictureBox1.Visible = false;
+            label1.Visible = false;
         }
 
         public int[] coordinatesX = coordinatesXInit();
@@ -79,6 +82,19 @@ namespace PummelParty
             player2 = new Player("Player", new Point(coordinatesX[0], coordinatesY[0]), 4);
             Controls.Add(player1.Draw());
             Controls.Add(player2.Draw());
+
+            string imagePath = $"\\images\\player{player1.numberOfImage}.png";
+            pictureBox1.Visible = true;
+            label1.Visible = true;
+            //круглые аватарки
+            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+            path.AddEllipse(0, 0, pictureBox1.Width, pictureBox1.Height);
+            Region rgn = new Region(path);
+            pictureBox1.Region = rgn;
+            pictureBox1.BackColor = SystemColors.ActiveCaption;
+
+            pictureBox1.Image = Image.FromFile(Path.Join(Directory.GetCurrentDirectory(), @imagePath));
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
         private void rollButon_Click(object sender, EventArgs e)
@@ -296,6 +312,11 @@ namespace PummelParty
                 response.Add(bytesRead[0]);
             }
             return answer = Encoding.UTF8.GetString(response.ToArray());
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

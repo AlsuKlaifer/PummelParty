@@ -36,7 +36,9 @@ namespace PummelParty
             rollButon.Visible = false;
             labelWin.Visible = false;
             labelCountSteps.Visible = false;
-            dicePictureBox.Visible = false;            
+            dicePictureBox.Visible = false;
+            label2.Visible = false;
+            pictureBox1.Visible = false;
         }
 
         public int[] coordinatesX = coordinatesXInit();
@@ -84,6 +86,20 @@ namespace PummelParty
 
             Controls.Add(player1.Draw());
             Controls.Add(player2.Draw());
+
+            string imagePath = $"\\images\\player{player1.numberOfImage}.png";
+            pictureBox1.Visible = true;
+            label2.Visible = true;
+            //круглые аватарки
+            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+            path.AddEllipse(0, 0, pictureBox1.Width, pictureBox1.Height);
+            Region rgn = new Region(path);
+            pictureBox1.Region = rgn;
+            pictureBox1.BackColor = SystemColors.ActiveCaption;
+
+            pictureBox1.Image = Image.FromFile(Path.Join(Directory.GetCurrentDirectory(), @imagePath));
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+
             Receive();
         }
 

@@ -36,7 +36,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.Pause = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dicePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonStart
@@ -92,9 +95,8 @@
             this.labelCountSteps.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelCountSteps.Location = new System.Drawing.Point(661, 459);
             this.labelCountSteps.Name = "labelCountSteps";
-            this.labelCountSteps.Size = new System.Drawing.Size(109, 46);
+            this.labelCountSteps.Size = new System.Drawing.Size(0, 46);
             this.labelCountSteps.TabIndex = 3;
-            this.labelCountSteps.Text = "label1";
             // 
             // dicePictureBox
             // 
@@ -136,11 +138,31 @@
             this.Pause.Visible = false;
             this.Pause.Click += new System.EventHandler(this.Pause_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(13, 15);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(82, 35);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(43, 25);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "You";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(836, 860);
+            this.ClientSize = new System.Drawing.Size(1142, 860);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Pause);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
@@ -153,6 +175,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dicePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,5 +191,7 @@
         private Label label1;
         private TextBox textBox1;
         private Button Pause;
+        private PictureBox pictureBox1;
+        private Label label2;
     }
 }
